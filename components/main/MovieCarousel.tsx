@@ -11,8 +11,9 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 import { MovieType, TrailerResponseType } from "@/app/types";
-import { TrailerDialog } from "../trailer/Trailer";
+import { TrailerDialog } from "../home/Trailer";
 import { getMovieTrailers } from "@/app/utils/get-data";
+import Image from "next/image";
 
 type MovieCarouselProps = {
   movies: MovieType[];
@@ -80,12 +81,30 @@ const MovieCarouselItem = ({ movie }: { movie: MovieType }) => {
   }, []);
 
   return (
-    <CarouselItem>
+    <CarouselItem className="basis-full">
       <div className="p-1">
         <Card>
-          <CardContent className="flex aspect-video max-h-[600px] items-center justify-center p-6">
-            <span className="text-4xl font-semibold">{movie.title}</span>
-            <TrailerDialog youtubeKey={trailerKey} />
+          <CardContent className="relative aspect-video max-h-[600px] p-0 overflow-hidden">
+            <Image
+              src={
+                movie.backdrop_path
+                  ? `https://image.tmdb.org/t/p/w1280${movie.backdrop_path}`
+                  : "/no-image.jpg"
+              }
+              alt={movie.title}
+              fill
+              sizes="100vw"
+              className="object-cover"
+              priority
+            />
+
+            {/* <div className="absolute inset-0 bg-black/50" /> */}
+
+            <div className="absolute bottom-6 left-6 z-10 space-y-4">
+              <h2 className="text-3xl font-bold text-white">{movie.title}</h2>
+
+              <TrailerDialog youtubeKey={trailerKey} />
+            </div>
           </CardContent>
         </Card>
       </div>

@@ -36,3 +36,25 @@ export type TrailerResponseType = {
   id: number;
   results: TrailerType[];
 };
+
+export type CrewMember = {
+  department: string;
+  id: number;
+  name: string;
+  job: string;
+};
+
+export type CastMember = {
+  id: number;
+  name: string;
+};
+
+export type MovieDetailType = {
+  id: number;
+  title: string;
+  overview: string;
+  credits?: {
+    crew?: CrewMember[];
+    cast?: CastMember[];
+  };
+};

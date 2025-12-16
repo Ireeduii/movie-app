@@ -1,22 +1,23 @@
 import {
   Dialog,
   DialogContent,
-  DialogDescription,
   DialogHeader,
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
+import React from "react";
 
-export const TrailerDialog = ({
-  youtubeKey,
-}: {
+type TrailerDialogProps = {
   youtubeKey: string | undefined;
-}) => {
+  children?: React.ReactNode; // children prop нэмсэн
+};
+
+export const TrailerDialog = ({ youtubeKey, children }: TrailerDialogProps) => {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button>Watch trailer</Button>
+        {children ? children : <Button>Watch trailer</Button>}
       </DialogTrigger>
       <DialogContent className="p-0 sm:max-w-4xl rounded-none">
         <DialogHeader>
@@ -25,7 +26,7 @@ export const TrailerDialog = ({
             width="898"
             height="600"
             src={`https://www.youtube.com/embed/${youtubeKey}`}
-            title="Use Strategic Thinking to Create the Life You Want"
+            title="Trailer"
             allowFullScreen
           ></iframe>
         </DialogHeader>

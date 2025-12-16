@@ -20,7 +20,7 @@ const Genre = async ({ searchParams }: GenrePageProps) => {
     <div>
       {name}
       <div className="flex flex-wrap gap-3">
-        {filteredMoviesResponse.results.slice(0, 10).map((movie) => (
+        {filteredMoviesResponse.results.slice(0, 5).map((movie) => (
           <MovieCard
             key={movie.id}
             id={movie.id}
