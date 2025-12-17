@@ -1,11 +1,12 @@
 "use client";
 
 import { useState } from "react";
-import { SearchSection } from "./SearchSection";
+
 import { Button } from "../ui/button";
 import { Search, X } from "lucide-react";
 import { GenreResponseType } from "@/app/types";
 import { GenreDropdown } from "./GenreDropDown";
+import { SearchSection } from "./SearchSection";
 
 export const MobileSearch = ({
   genresResponse,

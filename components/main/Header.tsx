@@ -12,7 +12,8 @@ export const Header = async () => {
     <header className="w-full">
       <div className="max-w-[1280px] flex justify-between m-auto items-center py-3">
         <div className="px-4">
-          <img src="logo.png" className="h-5 hidden sm:block" />
+          {" "}
+          <img src="logo.png" className="h-5 hidden sm:block" />{" "}
         </div>
 
         <div className="gap-5 hidden sm:flex">

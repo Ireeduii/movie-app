@@ -41,21 +41,21 @@ export function MovieCarousel({ movies }: MovieCarouselProps) {
     <>
       <Carousel setApi={setApi} className="w-screen">
         <CarouselContent>
-          {movies?.map((movie, index) => (
+          {movies?.slice(0, 5).map((movie, index) => (
             <MovieCarouselItem key={index} movie={movie} />
           ))}
         </CarouselContent>
         <CarouselPrevious className="left-13" />
         <CarouselNext className="right-13" />
       </Carousel>
-      <div className="flex gap-2">
+      <div className="flex justify-center mt-4 gap-2">
         {Array.from({ length: count }).map((_, index) => (
           <div
             onClick={() => {
               api?.scrollTo(index);
             }}
             key={index}
-            className={`rounded-full size-4 ${
+            className={`rounded-full size-4 cursor-pointer transition ${
               index + 1 === current ? "bg-white" : "bg-gray-600"
             }`}
           ></div>
@@ -97,8 +97,6 @@ const MovieCarouselItem = ({ movie }: { movie: MovieType }) => {
               className="object-cover"
               priority
             />
-
-            {/* <div className="absolute inset-0 bg-black/50" /> */}
 
             <div className="absolute bottom-6 left-6 z-10 space-y-4">
               <h2 className="text-3xl font-bold text-white">{movie.title}</h2>
